@@ -66,8 +66,12 @@ const treeData = [
     },
 ];
 
+let sample_initialOpenNodes = ["reptile", "reptile/squamata", "reptile/squamata/lizard"];
+
 function Tree() {
     const [search_word, setsearch_word] = useState("");
+    const [t_data, setData] = useState(treeData);
+    const [initialOpenNodes, setInitialOpenNodes] = useState(sample_initialOpenNodes);
 
     const inputHandelrForSearchWord = (e) => {
         let search_word = e.target.value;
@@ -76,8 +80,9 @@ function Tree() {
     };
 
     const excute_search_for_tree = () => {
+        // todo: 트리 메뉴에서 검색한 단어가 있는곳까지 열리게 만들기
         console.log("검색 버튼 클릭");
-        // todo: 트리 메뉴에서 검색한 단어가 있는곳까지 열리게 만들기  
+        // data.map
     };
 
     return (
@@ -85,7 +90,7 @@ function Tree() {
             <br />
             <input type="text" value={search_word} onChange={inputHandelrForSearchWord} />
             <button onClick={excute_search_for_tree}>검색</button> <br />
-            <TreeMenu data={treeData} hasSearch={false} />
+            <TreeMenu data={t_data} hasSearch={false} initialOpenNodes={initialOpenNodes} />
         </>
     );
 }
